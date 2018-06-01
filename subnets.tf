@@ -58,7 +58,7 @@ resource "aws_route_table_association" "public_public" {
   route_table_id = "${aws_route_table.public.id}"
 }
 
-resource "aws_subnet" "private_prod" {
+resource "aws_subnet" "private" {
   count             = "${var.az_count}"
   vpc_id            = "${aws_vpc.default.id}"
   cidr_block        = "${var.vpc_cidr_base}${lookup(var.private_subnet_cidrs, format("zone%d", count.index))}"
@@ -70,11 +70,11 @@ resource "aws_subnet" "private_prod" {
 }
 
 output "aws_subnet_private_ids" {
-  value = ["${aws_subnet.private_prod.*.id}"]
+  value = ["${aws_subnet.private.*.id}"]
 }
 
-resource "aws_route_table_association" "private_private_prod" {
+resource "aws_route_table_association" "private_private" {
   count          = "${var.az_count}"
-  subnet_id      = "${element(aws_subnet.private_prod.*.id, count.index)}"
+  subnet_id      = "${element(aws_subnet.private.*.id, count.index)}"
   route_table_id = "${element(aws_route_table.private.*.id, count.index)}"
 }
