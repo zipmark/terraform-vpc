@@ -66,11 +66,9 @@ The following subnets will be created in each AZ:
 
 * Public
   * Resources requiring public IP addresses such as VPN/bastion instances and Elastic Load Balancers.
-* Private working
-  * Internal non-production resources such as web servers and database instances.
-* Private production
+* Private
   * Internal production resources such as web servers and database instances.
-* Private admin
+* Admin
   * Internal shared administrative resources such as build server instances.
 
 Each subnet will be a /21 block providing up to 2,048 IP addresses per subnet and AZ.
@@ -117,8 +115,7 @@ The subnets created can include custom tags by setting variables of the form `SU
 | --------------- | --------------------------- |
 | admin           | admin_subnet_tags           |
 | public          | public_subnet_tags          |
-| private_prod    | private_prod_subnet_tags    |
-| private_working | private_working_subnet_tags |
+| private         | private_subnet_tags    |
 
 The routing tables can include custom tags by setting variables of the form `TABLENAME_route_table_tags`.
 

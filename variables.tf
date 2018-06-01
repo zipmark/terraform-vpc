@@ -88,12 +88,12 @@ variable "public_subnet_tags" {
   default     = {}
 }
 
-variable "private_prod_subnet_parent_cidr" {
+variable "private_subnet_parent_cidr" {
   description = "parent CIDR for the private production subnets"
   default     = ".64.0/19"
 }
 
-variable "private_prod_subnet_cidrs" {
+variable "private_subnet_cidrs" {
   description = "CIDRs for the private production subnets"
 
   default = {
@@ -104,29 +104,8 @@ variable "private_prod_subnet_cidrs" {
   }
 }
 
-variable "private_prod_subnet_tags" {
+variable "private_subnet_tags" {
   description = "Tags to apply to the private production subnets"
-  default     = {}
-}
-
-variable "private_working_subnet_parent_cidr" {
-  description = "parent CIDR for the private working subnets"
-  default     = ".96.0/19"
-}
-
-variable "private_working_subnet_cidrs" {
-  description = "CIDRs for the private working subnets"
-
-  default = {
-    zone0 = ".96.0/21"
-    zone1 = ".104.0/21"
-    zone2 = ".112.0/21"
-    zone3 = ".120.0/21"
-  }
-}
-
-variable "private_working_subnet_tags" {
-  description = "Tags to apply to the private working subnets"
   default     = {}
 }
 
